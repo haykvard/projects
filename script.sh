@@ -1,12 +1,12 @@
 #! /bin/bash
 
-NAME=$1
-SECONDNAME=$2
-LASTNAME=$3
-SHOW=$4
+Name=$1
+SecondName=$2
+LastName=$3
+Show=$4
 
-if [ "$SHOW" = "true" ]; then
-  echo "Hello, $NAME $SECONDNAME $LASTNAME"
+if [ "$Show" = "true" ]; then
+  echo "Hello, $Name $SecondName $LastName"
 else
   echo "If you want to see the name, please mark the show option"
 fi
