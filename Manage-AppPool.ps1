@@ -24,20 +24,13 @@ foreach ($Server in $Servers) {
         try {              
             if ($args[1] -eq "Start") {                      
                 Start-WebAppPool -Name $args[0] -ErrorAction Stop
-                Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully started."
             }
             elseif ($args[1] -eq "Stop") {
                 Stop-WebAppPool -Name $args[0] -ErrorAction Stop
-                Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully stopped."
             }
-            else {
-                Restart-WebAppPool -Name $args[0] -ErrorAction Stop
-                Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully recycled."
-            }                
+            else { Restart-WebAppPool -Name $args[0] -ErrorAction Stop }                
         }
-        catch {        
-            Write-Host "`n$($env:COMPUTERNAME) : $($_.Exception.Message)"
-        }
+        catch { Write-Host "`n$($env:COMPUTERNAME) : $($_.Exception.Message)" }
         
     } -ArgumentList $Site, $Action
 }
