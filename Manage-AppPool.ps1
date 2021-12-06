@@ -27,4 +27,3 @@ $Servers | ForEach-Object {
         catch {Write-Host "`n$($env:COMPUTERNAME) : $($_.Exception.Message)"}
     } -ArgumentList $Site, $Action
 }
-}
