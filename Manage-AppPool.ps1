@@ -24,15 +24,15 @@ foreach ($Server in $Servers) {
         try {              
             if ($args[1] -eq "Start") {                      
                 Start-WebAppPool -Name $args[0] -ErrorAction Stop
-                #Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully started." -ForegroundColor Cyan
+                Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully started."
             }
             elseif ($args[1] -eq "Stop") {
                 Stop-WebAppPool -Name $args[0] -ErrorAction Stop
-                #Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully stopped." -ForegroundColor Cyan
+                Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully stopped."
             }
             else {
                 Restart-WebAppPool -Name $args[0] -ErrorAction Stop
-                #Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully recycled." -ForegroundColor Cyan
+                Write-Host "`n$($env:COMPUTERNAME) : $($args[0]) appPool successfully recycled."
             }                
         }
         catch {        
