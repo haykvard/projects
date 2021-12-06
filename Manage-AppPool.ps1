@@ -16,9 +16,9 @@ Param (
 
 if ($null -eq $cred) { $cred = Get-Credential $DC\$env:USERNAME }
 
-$Servers | ForEach-Object {
+foreach ($Server in $Servers) {
 
-    $session = New-PSSession –ComputerName "$_.$DC" -Credential $cred -Authentication Credssp -ErrorAction Stop
+    $session = New-PSSession –ComputerName "$Server.$DC" -Credential $cred -Authentication Credssp -ErrorAction Stop
     Invoke-Command -Session $session -ScriptBlock {
            
         try {              
@@ -36,8 +36,8 @@ $Servers | ForEach-Object {
             }                
         }
         catch {        
-            Write-Host "`n$($env:COMPUTERNAME) : $($_.Exception.Message)" -ForegroundColor Red
+            Write-Host "`n$($env:COMPUTERNAME) : $($_.Exception.Message)"
         }
-
+        
     } -ArgumentList $Site, $Action
 }
